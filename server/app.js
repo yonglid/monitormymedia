@@ -3,9 +3,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import logger from 'morgan';
-import mainRoutes from './server/routes/main';
+import mainRoutes from './routes/main';
+import cors from 'cors'; 
 // set up dependencies
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
