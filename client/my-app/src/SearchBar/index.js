@@ -8,6 +8,9 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import { withAuth } from '@okta/okta-react';
+import { useHistory} from 'react-router-dom'; 
+
+import Alert from '@material-ui/lab/Alert';
 
 const styles = theme => ({
   root: {
@@ -70,27 +73,54 @@ const styles = theme => ({
 });
 
 class SearchBar extends React.Component {
+  state = {
+    showAlert: false,
+  };
   constructor(props) {
     super(props);
     this.logout = this.logout.bind(this);
+    this.handleTabChange = this.handleTabChange.bind(this); 
+    this.showAlert = this.showAlert.bind(this);
+    this.removeAlert = this.removeAlert.bind(this);
+    this.try = this.try.bind(this);
   }
-
+ 
+  handleTabChange = (event, value) => {
+    this.setState({ value });
+  };
   async logout(e) {
     e.preventDefault();
-    this.props.auth.logout('/');
+    this.props.auth.logout('/'); // need to set this up for auth
   }
 
+  showAlert() {
+    this.setState({showAlert: true });
+
+  }
+
+  removeAlert() {
+    this.setState({showAlert: false });
+
+  }
+
+  try = () => {
+    this.props.history.push('/about');
+  }
+  
   render() {
     const { classes } = this.props;
-
-    return (
+     const withAlert =  (
       <div className={classes.root}>
         <AppBar position="static" style={{alignItems: 'center'}}>
+        {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <MenuIcon />
+        </IconButton> */}
           <Toolbar>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
+
               <InputBase
                 placeholder="Search for articles in an area!"
                 onKeyPress={this.props.onSearch}
@@ -101,11 +131,47 @@ class SearchBar extends React.Component {
               />
             </div>
             <div className={classes.grow} />
+            <Alert severity="info">This is an info alert — check it out!</Alert>
+            <Button onClick={this.removeAlert} color="inherit">About</Button>
+            <Button onClick={this.showAlert} color="inherit">Newsfeed</Button>
             <Button onClick={this.logout} color="inherit">Logout</Button>
           </Toolbar>
         </AppBar>
       </div>
     );
+    const withoutAlert = (
+      <div className={classes.root}>
+
+        <AppBar position="static" style={{alignItems: 'center'}}>
+        {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <MenuIcon />
+        </IconButton> */}
+          <Toolbar>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+
+              <InputBase
+                placeholder="Search for articles in an area!"
+                onKeyPress={this.props.onSearch}
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+              />
+            </div>
+            <div className={classes.grow} />
+            <Button onClick={this.try} color="inherit">About</Button>
+            <Button onClick={this.showAlert} color="inherit">Newsfeed</Button>
+            <Button onClick={this.logout} color="inherit">Logout</Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+    // console.log(classes.history.push('/about')); 
+    console.log(this.state.showAlert);
+    return this.state.showAlert ? withAlert : withoutAlert ;
   }
 }
 

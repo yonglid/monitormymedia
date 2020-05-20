@@ -9,7 +9,6 @@ import { withAuth } from '@okta/okta-react';
 import GithubRepo from "../GithubRepo"
 import SearchBar from "../SearchBar"
 
-import githubClient from '../githubClient'
 import APIClient from '../apiClient'
 import googlerssClient from '../googlerssClient';
 import GoogleRssArticle from '../GoogleRssArticle';
@@ -27,6 +26,7 @@ const styles = theme => ({
 });
 
 class Home extends React.Component {
+  
  state = {
    value: 0,
    repos: [],
@@ -117,15 +117,6 @@ class Home extends React.Component {
    if (!target.value || target.length < 3) { return }
    if (event.which !== 13) { return }
 
-  //  githubClient
-  //    .getJSONRepos(target.value)
-  //    .then((response) => {
-  //      target.blur();
-  //      console.log(response);
-  //      this.setState({ ...this.state, value: 1 });
-  //      this.resetRepos(response.items);
-  //    })
-  // switches over to articles tab! 
    googlerssClient
      .getRssXMLFeed(94578)
      .then((response)=> {
@@ -161,7 +152,7 @@ class Home extends React.Component {
  render() {
    return (
      <div className={styles.root}>
-       <SearchBar auth={this.props.auth} onSearch={this.onSearch} />
+       <SearchBar auth={this.props.auth} onSearch={this.onSearch} history={this.props.history}/>
         <Tabs
          value={this.state.value}
          onChange={this.handleTabChange}
