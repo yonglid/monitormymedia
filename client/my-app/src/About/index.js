@@ -36,11 +36,12 @@ export default function ComplexGrid(props) {
   return (
     <div className={classes.root}>
       <SearchBar history={props.history}/>
-      <Grid container className={classes.root} spacing={2}>
+      <div>
+      <Grid container className={classes.root} spacing={4}>
           <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Grid container spacing={2} alignItems="center" justify="center">
-                <Grid item xs={3} style={{textAlign: "center", backgroundColor: "rgb(23,84,226)", color: 'white'}}> 
+              <Paper className={classes.paper} elevation={3} style={{padding: "0"}}>
+                <Grid container spacing={2} style={{display: "flex", alignItems: "stretch"}}>
+                <Grid item xs={3} style={{backgroundColor: "rgb(23,84,226)", color: 'white', alignItems: 'center', display: 'flex', justifyContent: 'center'}}> 
                     <Typography gutterBottom={false} variant="h4">
                         What?
                     </Typography>
@@ -58,11 +59,11 @@ export default function ComplexGrid(props) {
                 </Grid>
             </Paper>
           </Grid>
-
           <Grid item xs={12}>
-            <Paper className={classes.paper}>
-                <Grid container spacing={2} alignItems="center" justify="center" >
-                <Grid item xs={3} style={{textAlign: "center", backgroundColor: "rgb(23,84,226)", color: 'white'}}>
+          <Paper className={classes.paper} elevation={3} style={{padding: "0"}}>
+
+            <Grid container spacing={2} style={{display: "flex", alignItems: "stretch"}}>
+                <Grid item xs={3} style={{backgroundColor: "rgb(23,84,226)", color: 'white', alignItems: 'center', display: 'flex', justifyContent: 'center'}}> 
                     <Typography gutterBottom={true} variant="h4">
                         Why?
                     </Typography>
@@ -81,9 +82,9 @@ export default function ComplexGrid(props) {
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper className={classes.paper}>
-                <Grid container spacing={2} alignItems="center" justify="center">
-                    <Grid item xs={3} style={{textAlign: "center", backgroundColor: "rgb(23,84,226)", color: 'white'}}>
+          <Paper className={classes.paper} elevation={3} style={{padding: "0"}}>
+          <Grid container spacing={2} style={{display: "flex", alignItems: "stretch"}}>
+                <Grid item xs={3} style={{backgroundColor: "rgb(23,84,226)", color: 'white', alignItems: 'center', display: 'flex', justifyContent: 'center'}}> 
                         <Typography gutterBottom={true} variant="h4">
                             Why now?
                         </Typography>
@@ -102,9 +103,7 @@ export default function ComplexGrid(props) {
             </Paper>
           </Grid>
       </Grid>
-      
-
-     
+      </div>
     </div>
   );
 }
