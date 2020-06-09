@@ -14,6 +14,8 @@ import googlerssClient from "../googlerssClient";
 import GoogleRssArticle from "../GoogleRssArticle";
 import twitterClient from "../twitterClient";
 
+import "../Styles/media_monitor.scss";
+
 const styles = (theme) => ({
   root: {
     flexGrow: 1,

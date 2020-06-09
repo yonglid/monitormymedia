@@ -1,0 +1,14 @@
+$fontPrimary: "Jost";
+$fontSecondary: "Crimson Pro";
+
+.font-primary{
+  font-family: $fontPrimary;
+}
+
+.font-secondary{
+  font-family: $fontSecondary;
+}
+
+body.media-monitor *{
+  font-family: $fontPrimary;
+}

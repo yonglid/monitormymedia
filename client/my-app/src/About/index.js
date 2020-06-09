@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     margin: 'auto',
-    maxWidth: 700, // the rows themselves 
+    maxWidth: 700, // the rows themselves
   },
   head: {
     backgroundColor: 'red',
@@ -41,7 +41,7 @@ export default function ComplexGrid(props) {
           <Grid item xs={12}>
               <Paper className={classes.paper} elevation={3} style={{padding: "0"}}>
                 <Grid container spacing={2} style={{display: "flex", alignItems: "stretch"}}>
-                <Grid item xs={3} style={{backgroundColor: "rgb(23,84,226)", color: 'white', alignItems: 'center', display: 'flex', justifyContent: 'center'}}> 
+                <Grid item xs={3} style={{backgroundColor: "rgb(23,84,226)", color: 'white', alignItems: 'center', display: 'flex', justifyContent: 'center'}}>
                     <Typography gutterBottom={false} variant="h4">
                         What?
                     </Typography>
@@ -50,7 +50,7 @@ export default function ComplexGrid(props) {
                     <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
                         <Typography gutterBottom variant="subtitle1">
-                        A tool to help Congressional and local Campaigns keep track of their districts' news. 
+                        A tool to help Congressional and local Campaigns keep track of their districts' news.
                         We overlay Google News, Twitter, and Facebook search results with Google Maps' district boundaries.
                         </Typography>
                     </Grid>
@@ -63,7 +63,7 @@ export default function ComplexGrid(props) {
           <Paper className={classes.paper} elevation={3} style={{padding: "0"}}>
 
             <Grid container spacing={2} style={{display: "flex", alignItems: "stretch"}}>
-                <Grid item xs={3} style={{backgroundColor: "rgb(23,84,226)", color: 'white', alignItems: 'center', display: 'flex', justifyContent: 'center'}}> 
+                <Grid item xs={3} style={{backgroundColor: "rgb(23,84,226)", color: 'white', alignItems: 'center', display: 'flex', justifyContent: 'center'}}>
                     <Typography gutterBottom={true} variant="h4">
                         Why?
                     </Typography>
@@ -72,7 +72,7 @@ export default function ComplexGrid(props) {
                     <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
                         <Typography gutterBottom variant="subtitle1">
-                            Candidates need a seamless mechanism to stay informed on issues that matter to their constituents. 
+                            Candidates need a seamless mechanism to stay informed on issues that matter to their constituents.
                             They need to track across multiple outlets and detemrine what content is worthy of a response.
                         </Typography>
                     </Grid>
@@ -84,7 +84,7 @@ export default function ComplexGrid(props) {
           <Grid item xs={12}>
           <Paper className={classes.paper} elevation={3} style={{padding: "0"}}>
           <Grid container spacing={2} style={{display: "flex", alignItems: "stretch"}}>
-                <Grid item xs={3} style={{backgroundColor: "rgb(23,84,226)", color: 'white', alignItems: 'center', display: 'flex', justifyContent: 'center'}}> 
+                <Grid item xs={3} style={{backgroundColor: "rgb(23,84,226)", color: 'white', alignItems: 'center', display: 'flex', justifyContent: 'center'}}>
                         <Typography gutterBottom={true} variant="h4">
                             Why now?
                         </Typography>
@@ -93,8 +93,8 @@ export default function ComplexGrid(props) {
                         <Grid item xs container direction="column" spacing={2}>
                         <Grid item xs>
                             <Typography gutterBottom variant="subtitle1">
-                                The COVID-19 pandemic has prevented candidates from maintaining comparable levels of community engagement. 
-                                Instead of attending events and meeting with constituents, canddiates need to use online resource sto stay updated on what matters in their race.                        
+                                The COVID-19 pandemic has prevented candidates from maintaining comparable levels of community engagement.
+                                Instead of attending events and meeting with constituents, canddiates need to use online resource sto stay updated on what matters in their race.
                             </Typography>
                         </Grid>
                         </Grid>

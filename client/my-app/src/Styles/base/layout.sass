@@ -1,0 +1,26 @@
+html
+  font-family: $fontPrimary
+
+*
+  box-sizing: border-box
+
+.inner-container
+  width: $containerWidth
+  max-width: $containerMaxWidth
+  margin-left: auto
+  margin-right: auto
+
+  @include md
+    width: $containerWidthTablet
+  @include sm
+    width: $containerWidthMobile
+
+*
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-rendering: optimizeLegibility
+
+h1,h2,h3,h4,h5,h6,p,a
+  margin: 0
+  line-height: 1.3
+  color: $blue
