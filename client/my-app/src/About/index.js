@@ -36,7 +36,7 @@ export default function ComplexGrid(props) {
   return (
     <div className={classes.root}>
       <SearchBar history={props.history}/>
-      <div>
+      <div class="inner-container top-50">
       <Grid container className={classes.root} spacing={4}>
           <Grid item xs={12}>
               <Paper className={classes.paper} elevation={3} style={{padding: "0"}}>
