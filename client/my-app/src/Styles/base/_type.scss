@@ -11,4 +11,8 @@ $fontSecondary: "Crimson Pro";
 
 body.media-monitor *{
   font-family: $fontPrimary;
+  color: $blue;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
