@@ -14,6 +14,8 @@ import googlerssClient from "../googlerssClient";
 import GoogleRssArticle from "../GoogleRssArticle";
 import twitterClient from "../twitterClient";
 
+import "../Styles/media_monitor.scss";
+
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
@@ -155,13 +157,11 @@ class Home extends React.Component {
     }
     return articles.map((article) => {
       return (
-        <Grid item xs={12} md={3} key={article.id}>
           <GoogleRssArticle
             onStarred={this.onStarred}
             isStarred={this.isStarred(article)}
             article={article}
           />
-        </Grid>
       );
     });
   };
@@ -174,30 +174,32 @@ class Home extends React.Component {
           onSearch={this.onSearch}
           history={this.props.history}
         />
-        <Tabs
-          value={this.state.value}
-          onChange={this.handleTabChange}
-          indicatorColor="primary"
-          textColor="primary"
-          fullWidth
-        >
-          <Tab label="Starred" />
-          <Tab label="Articles" />
-          <Tab label="Map" />
-        </Tabs>
+        <div class="inner-container">
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleTabChange}
+            indicatorColor="primary"
+            textColor="primary"
+            fullWidth
+          >
+            <Tab label="Starred" />
+            <Tab label="Articles" />
+            <Tab label="Map" />
+          </Tabs>
 
-        <SwipeableViews
-          axis={"x-reverse"}
-          index={this.state.value}
-          onChangeIndex={this.handleTabChangeIndex}
-        >
-          <Grid container spacing={16} style={{ padding: "20px 0" }}>
-            {this.renderArticles(this.state.starred)}
-          </Grid>
-          <Grid container spacing={16} style={{ padding: "20px 0" }}>
-            {this.renderArticles(this.state.articles)}
-          </Grid>
-        </SwipeableViews>
+          <SwipeableViews
+            axis={"x-reverse"}
+            index={this.state.value}
+            onChangeIndex={this.handleTabChangeIndex}
+          >
+            <div class="articles-container">
+              {this.renderArticles(this.state.starred)}
+            </div>
+            <div class="articles-container">
+              {this.renderArticles(this.state.articles)}
+            </div>
+          </SwipeableViews>
+        </div>
       </div>
     );
   }

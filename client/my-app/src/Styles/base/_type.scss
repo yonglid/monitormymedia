@@ -1,0 +1,18 @@
+$fontPrimary: "Jost";
+$fontSecondary: "Crimson Pro";
+
+.font-primary{
+  font-family: $fontPrimary;
+}
+
+.font-secondary{
+  font-family: $fontSecondary;
+}
+
+body.media-monitor *{
+  font-family: $fontPrimary;
+  color: $blue;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
