@@ -18,6 +18,7 @@ export default {
       (response) =>
         response.json().then((json) => {
           console.log(json);
+          console.log("JSON RESPONSE TYPE: ", json);
           return json;
         })
       // response.text().then((text) => {
@@ -40,6 +41,7 @@ export default {
       response.json().then((json) => {
         console.log("TWEETS!!");
         console.log(json);
+        console.log(json["0"]);
         return json;
       })
     );

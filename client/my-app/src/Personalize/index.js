@@ -16,6 +16,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Slider from "@material-ui/core/Slider";
 
 const options = ["1", "2", "3", "4", "5", "6", "7"];
+const states = ["MA", "CA"]; // definitely find library for this
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -72,7 +73,9 @@ const PrettoSlider = withStyles({
 
 export default function ControllableStates(props) {
   const [value, setValue] = React.useState(options[0]);
+  const [districtValue, setDistrictValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState("");
+  const [districtInput, setDistrictInput] = React.useState("");
   const classes = useStyles();
 
   //   const classes = useStyles();
@@ -100,17 +103,31 @@ export default function ControllableStates(props) {
               elevation={3}
               style={{ padding: "0" }}
             >
-              <div>{`value: ${value !== null ? `'${value}'` : "null"}`}</div>
-              <div>{`inputValue: '${inputValue}'`}</div>
-              <br />
               <Autocomplete
                 value={value}
                 onChange={(event, newValue) => {
                   setValue(newValue);
                 }}
-                inputValue={inputValue}
+                inputValue={"CA"}
                 onInputChange={(event, newInputValue) => {
                   setInputValue(newInputValue);
+                }}
+                id="controllable-states-demo"
+                options={states}
+                style={{ width: 300, alignContent: "center" }}
+                renderInput={(params) => (
+                  <TextField {...params} label="State" variant="outlined" />
+                )}
+              />
+              <br />
+              <Autocomplete
+                value={districtValue}
+                onChange={(event, newValue) => {
+                  setDistrictValue(newValue);
+                }}
+                inputValue={districtInput}
+                onInputChange={(event, newInputValue) => {
+                  setDistrictInput(newInputValue);
                 }}
                 id="controllable-states-demo"
                 options={options}
