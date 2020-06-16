@@ -127,9 +127,9 @@ class Home extends React.Component {
       this.setState({ ...this.state, value: 1 });
       this.resetArticles(jsonResp.items);
     });
-    // twitterClient.getTwitterTrends(1).then((response) => {
-    //   console.log(response);
-    // });
+    twitterClient.getTwitterTrends(1).then((response) => {
+      console.log(response);
+    });
   };
   renderRepos = (repos) => {
     if (!repos) {
