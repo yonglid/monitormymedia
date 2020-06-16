@@ -123,7 +123,7 @@ class Home extends React.Component {
       return;
     }
 
-    googlerssClient.getRssXMLFeed(94578).then((response) => {
+    googlerssClient.getRssXMLFeed(target.value).then((response) => {
       const jsonResp = JSON.parse(response);
       console.log(JSON.parse(response));
       this.setState({ ...this.state, value: 1 });
@@ -157,11 +157,11 @@ class Home extends React.Component {
     }
     return articles.map((article) => {
       return (
-          <GoogleRssArticle
-            onStarred={this.onStarred}
-            isStarred={this.isStarred(article)}
-            article={article}
-          />
+        <GoogleRssArticle
+          onStarred={this.onStarred}
+          isStarred={this.isStarred(article)}
+          article={article}
+        />
       );
     });
   };

@@ -114,6 +114,7 @@ class Tweets extends React.Component {
   };
 
   onSearch = (event) => {
+    console.log("EVENT: ", event);
     const target = event.target;
     if (!target.value || target.length < 3) {
       return;
@@ -138,12 +139,14 @@ class Tweets extends React.Component {
     const query = "Covid";
     const result_type = "mixed";
     const count = 10;
-    twitterClient.getTweets(query, result_type, count).then((response) => {
-      const jsonResp = response["statuses"];
-      this.setState({ ...this.state, value: 1 });
-      this.resetArticles(jsonResp);
-      console.log(jsonResp);
-    });
+    twitterClient
+      .getTweets(target.value, result_type, count)
+      .then((response) => {
+        const jsonResp = response["statuses"];
+        this.setState({ ...this.state, value: 1 });
+        this.resetArticles(jsonResp);
+        console.log(jsonResp);
+      });
   };
   renderRepos = (repos) => {
     if (!repos) {
