@@ -1,0 +1,13 @@
+.inner-container{
+  width: $containerWidth;
+  max-width: $containerMaxWidth;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include md{
+    width: $containerWidthTablet;
+  }
+  @include sm{
+    width: $containerWidthMobile;
+  }
+}

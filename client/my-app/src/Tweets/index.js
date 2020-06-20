@@ -10,8 +10,7 @@ import GithubRepo from "../GithubRepo";
 import SearchBar from "../SearchBar";
 
 import APIClient from "../apiClient";
-import googlerssClient from "../googlerssClient";
-import GoogleRssArticle from "../GoogleRssArticle";
+import TweetCard from "../TweetCard";
 import twitterClient from "../twitterClient";
 
 import "../Styles/media_monitor.scss";
@@ -28,7 +27,7 @@ const styles = (theme) => ({
   },
 });
 
-class Home extends React.Component {
+class Tweets extends React.Component {
   state = {
     value: 0,
     repos: [],
@@ -115,6 +114,7 @@ class Home extends React.Component {
   };
 
   onSearch = (event) => {
+    console.log("EVENT: ", event);
     const target = event.target;
     if (!target.value || target.length < 3) {
       return;
@@ -123,15 +123,30 @@ class Home extends React.Component {
       return;
     }
 
-    googlerssClient.getRssXMLFeed(target.value).then((response) => {
-      const jsonResp = JSON.parse(response);
-      console.log(JSON.parse(response));
-      this.setState({ ...this.state, value: 1 });
-      this.resetArticles(jsonResp.items);
-    });
-    twitterClient.getTwitterTrends(1).then((response) => {
-      console.log(response);
-    });
+    // googlerssClient.getRssXMLFeed(94578).then((response) => {
+    //   const jsonResp = JSON.parse(response);
+    //   console.log(JSON.parse(response));
+    //   this.setState({ ...this.state, value: 1 });
+    //   this.resetArticles(jsonResp.items);
+    // });
+    // twitterClient.getTwitterTrends(1).then((response) => {
+    //   console.log(response);
+    //   const jsonResp = response;
+    //   this.setState({ ...this.state, value: 1 });
+    //   console.log("json items?: ", jsonResp[0]["trends"]);
+    //   this.resetArticles(jsonResp[0]["trends"]);
+    // });
+    const query = "Covid";
+    const result_type = "mixed";
+    const count = 10;
+    twitterClient
+      .getTweets(target.value, result_type, count)
+      .then((response) => {
+        const jsonResp = response["statuses"];
+        this.setState({ ...this.state, value: 1 });
+        this.resetArticles(jsonResp);
+        console.log(jsonResp);
+      });
   };
   renderRepos = (repos) => {
     if (!repos) {
@@ -150,14 +165,14 @@ class Home extends React.Component {
     });
   };
   renderArticles = (articles) => {
-    console.log("ARTICLES");
+    console.log("TWEETS");
     console.log(articles);
     if (!articles) {
       return [];
     }
     return articles.map((article) => {
       return (
-        <GoogleRssArticle
+        <TweetCard
           onStarred={this.onStarred}
           isStarred={this.isStarred(article)}
           article={article}
@@ -205,4 +220,4 @@ class Home extends React.Component {
   }
 }
 
-export default withStyles(styles)(withAuth(Home));
+export default withStyles(styles)(withAuth(Tweets));
