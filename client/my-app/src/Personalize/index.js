@@ -14,6 +14,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
 import Slider from "@material-ui/core/Slider";
+import { Switch } from "@material-ui/core";
 
 const options = ["1", "2", "3", "4", "5", "6", "7"];
 const states = ["MA", "CA"]; // definitely find library for this
@@ -77,6 +78,7 @@ export default function ControllableStates(props) {
   const [inputValue, setInputValue] = React.useState("");
   const [districtInput, setDistrictInput] = React.useState("");
   const classes = useStyles();
+  const [pushNotification, setPushNotification] = React.useState(false);
 
   //   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -177,12 +179,22 @@ export default function ControllableStates(props) {
                   />
                 </FormGroup>
               </FormControl>
-
+              <div>
+                How far away from your district can we search?
               <PrettoSlider
-                valueLabelDisplay="auto"
-                aria-label="pretto slider"
-                defaultValue={20}
-              />
+                  valueLabelDisplay="auto"
+                  aria-label="pretto slider"
+                  defaultValue={20}
+                />
+              </div>
+              <div>
+                Would you like to receive push notifications?
+                <Switch
+                  checked={pushNotification}
+                  onChange={() => setPushNotification(!pushNotification)}
+                  name="pushNotifications"
+                />
+              </div>
             </Paper>
           </Grid>
         </Grid>
