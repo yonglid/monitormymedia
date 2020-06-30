@@ -10,6 +10,7 @@ import {
 const router = express.Router();
 router.post("/content", createContent);
 router.get("/content", getAllContent);
+// /api/content/:contentId
 router.get("/content/:contentId", getSingleContent);
 router.patch("/content/:contentId", updateContent);
 router.delete("/content/:contentId", deleteContent);
