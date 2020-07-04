@@ -7,6 +7,7 @@ import Home from "../Home";
 import About from "../About";
 import Personalize from "../Personalize";
 import Tweets from "../Tweets";
+import Feedback from '../Feedback';
 
 class Main extends Component {
   // constructor(props) {
@@ -28,6 +29,7 @@ class Main extends Component {
           <Route exact path="/tweets" component={Tweets} />
           <Route path="/about" component={About} />
           <Route path="/newsfeed" component={Personalize} />
+          <Route path="/feedback" component={Feedback} />
         </Switch>
       </Router>
     );

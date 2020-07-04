@@ -110,6 +110,10 @@ class SearchBar extends React.Component {
     this.props.history.push("/newsfeed");
   };
 
+  feedback = () => {
+    this.props.history.push('/feedback');
+  };
+
   render() {
     const { classes } = this.props;
     const withAlert = (
@@ -140,6 +144,9 @@ class SearchBar extends React.Component {
             </Button>
             <Button onClick={this.showAlert} color="inherit">
               Newsfeed
+            </Button>
+            <Button onClick={this.showAlert} color='inherit'>
+              Feedback
             </Button>
             <Button onClick={this.logout} color="inherit">
               Logout
@@ -175,6 +182,9 @@ class SearchBar extends React.Component {
             </Button>
             <Button onClick={this.personalize} color="inherit">
               Newsfeed
+            </Button>
+            <Button onClick={this.feedback} color='inherit'>
+              Feedback
             </Button>
             <Button onClick={this.logout} color="inherit">
               Logout
