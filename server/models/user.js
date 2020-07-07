@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema({
   }, 
   starred: {
       type: String
+  },
+  notification: {
+      type: Boolean
   }
 });
 export default mongoose.model('User', userSchema);
