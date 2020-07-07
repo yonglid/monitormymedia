@@ -44,38 +44,8 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     maxWidth: "100%",
     maxHeight: "100%",
-  },
+  }
 }));
-
-const PrettoSlider = withStyles({
-  root: {
-    color: "#52af77",
-    height: 8,
-  },
-  thumb: {
-    height: 24,
-    width: 24,
-    backgroundColor: "#fff",
-    border: "2px solid currentColor",
-    marginTop: -8,
-    marginLeft: -12,
-    "&:focus, &:hover, &$active": {
-      boxShadow: "inherit",
-    },
-  },
-  active: {},
-  valueLabel: {
-    left: "calc(-50% + 4px)",
-  },
-  track: {
-    height: 8,
-    borderRadius: 4,
-  },
-  rail: {
-    height: 8,
-    borderRadius: 4,
-  },
-})(Slider);
 
 export default function ControllableStates(props) {
   const [value, setValue] = React.useState(options[0]);
@@ -128,115 +98,129 @@ export default function ControllableStates(props) {
   return (
     <div className={classes.root}>
       <SearchBar history={props.history} />
-      <div>
-        <Grid container className={classes.root} spacing={0}>
-          <Grid item xs={12}>
-            <Paper
-              className={classes.paper}
-              elevation={3}
-              style={{ padding: "0" }}
-            >
-              <Autocomplete
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
-                inputValue={"CA"}
-                onInputChange={(event, newInputValue) => {
-                  setInputValue(newInputValue);
-                }}
-                id="controllable-states-demo"
-                options={states}
-                style={{ width: 300, alignContent: "center" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="State" variant="outlined" />
-                )}
-              />
-              <br />
-              <Autocomplete
-                value={districtValue}
-                onChange={(event, newValue) => {
-                  setDistrictValue(newValue);
-                }}
-                inputValue={districtInput}
-                onInputChange={(event, newInputValue) => {
-                  setDistrictInput(newInputValue);
-                }}
-                id="controllable-states-demo"
-                options={options}
-                style={{ width: 300, alignContent: "center" }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="District Number"
-                    variant="outlined"
-                  />
-                )}
-              />
-              <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">
-                  Tell us where you want to get your news
-                </FormLabel>
-                <FormGroup>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={gilad}
-                        onChange={handleChange}
-                        name="localnewsoutlet"
-                      />
-                    }
-                    label="Local News Outlet"
-                  />
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={jason}
-                        onChange={handleChange}
-                        name="twitter"
-                      />
-                    }
-                    label="Twitter"
-                  />
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={antoine}
-                        onChange={handleChange}
-                        name="facebook"
-                      />
-                    }
-                    label="Facebook"
-                  />
-                </FormGroup>
-              </FormControl>
-              <div>
-                <DateTimeRangeContainer
-                  ranges={ranges}
-                  start={startEndDate.start}
-                  end={startEndDate.end}
-                  local={local}
-                  maxDate={maxDate}
-                  applyCallback={applyCallback}
-                >
-                  <FormControl variant="outlined">
-                    <InputLabel htmlFor="component-simple" shrink>Select Date Range</InputLabel>
-                    <OutlinedInput id="component-simple" value={`${startEndDate.start.format(
-                      "MM-DD-YYYY HH:mm"
-                    )} - ${startEndDate.end.format("MM-DD-YYYY HH:mm")}`} disabled />
-                  </FormControl>
-                </DateTimeRangeContainer>
-              </div>
-              <div>
-                Would you like to receive push notifications?
-                <Switch
-                  checked={pushNotification}
-                  onChange={() => setPushNotification(!pushNotification)}
-                  name="pushNotifications"
+      <div class="inner-container top-50">
+        <Grid container className={classes.root} spacing={4}></Grid>
+        <Grid item xs={12}>
+          <Paper
+            className={classes.paper}
+            elevation={3}
+            style={{ padding: "0" }}
+          >
+            <Autocomplete
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+              inputValue={"CA"}
+              onInputChange={(event, newInputValue) => {
+                setInputValue(newInputValue);
+              }}
+              id="controllable-states-demo"
+              options={states}
+              style={{ width: 300, alignContent: "center" }}
+              renderInput={(params) => (
+                <TextField {...params} label="State" variant="outlined" />
+              )}
+            />
+            <br />
+            <Autocomplete
+              value={districtValue}
+              onChange={(event, newValue) => {
+                setDistrictValue(newValue);
+              }}
+              inputValue={districtInput}
+              onInputChange={(event, newInputValue) => {
+                setDistrictInput(newInputValue);
+              }}
+              id="controllable-states-demo"
+              options={options}
+              style={{ width: 300, alignContent: "center" }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="District Number"
+                  variant="outlined"
                 />
-              </div>
-            </Paper>
-          </Grid>
+              )}
+            />
+            <FormControl component="fieldset" className={classes.formControl}>
+              <FormLabel component="legend">
+                Tell us where you want to get your news
+                </FormLabel>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={gilad}
+                      onChange={handleChange}
+                      name="localnewsoutlet"
+                    />
+                  }
+                  label="Local News Outlet"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={jason}
+                      onChange={handleChange}
+                      name="twitter"
+                    />
+                  }
+                  label="Twitter"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={antoine}
+                      onChange={handleChange}
+                      name="facebook"
+                    />
+                  }
+                  label="Facebook"
+                />
+              </FormGroup>
+            </FormControl>
+            <div>
+              <Typography id="discrete-slider" gutterBottom>
+                How far away from your district can we search?
+              </Typography>
+              <Slider
+                defaultValue={20}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="auto"
+                step={10}
+                marks
+                min={0}
+                max={200}
+              />
+            </div>
+            <div>
+              <DateTimeRangeContainer
+                ranges={ranges}
+                start={startEndDate.start}
+                end={startEndDate.end}
+                local={local}
+                maxDate={maxDate}
+                applyCallback={applyCallback}
+              >
+                <FormControl variant="outlined">
+                  <InputLabel htmlFor="component-simple" shrink>Select Date Range</InputLabel>
+                  <OutlinedInput id="component-simple" value={`${startEndDate.start.format(
+                    "MM-DD-YYYY HH:mm"
+                  )} - ${startEndDate.end.format("MM-DD-YYYY HH:mm")}`} disabled />
+                </FormControl>
+              </DateTimeRangeContainer>
+            </div>
+            <div>
+              Would you like to receive push notifications?
+                <Switch
+                checked={pushNotification}
+                onChange={() => setPushNotification(!pushNotification)}
+                name="pushNotifications"
+              />
+            </div>
+          </Paper>
         </Grid>
       </div>
     </div >
