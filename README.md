@@ -16,6 +16,7 @@ Install mongodb for MAC OS(using brew):
 - run 'brew services stop mongodb-community' to stop MongoDB
 
 Install mongodb for Windows:
+- https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
 - https://stackoverflow.com/questions/20796714/how-do-i-start-mongo-db-from-windows 
 
 Install Robo3T:
