@@ -20,6 +20,7 @@ Install mongodb for Windows:
 - https://stackoverflow.com/questions/20796714/how-do-i-start-mongo-db-from-windows 
 
 Install Robo3T:
+- https://robomongo.org/
 - Type: Direct Connection 
 - Address: localhost: 27017
 Note: no authentication required
