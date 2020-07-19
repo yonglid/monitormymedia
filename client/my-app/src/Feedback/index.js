@@ -54,7 +54,8 @@ export default function Feedback(props){
                             value={likes}
                             onChange={(event, newLikes) => {
                                 setLikes(newLikes);
-                            }} />
+                            }}
+                            />
                         </Grid>
                     </Grid>
                     <Grid item xs={12} container style={{maxWidth:700}} alignItems='center'>
@@ -73,7 +74,8 @@ export default function Feedback(props){
                             value={features}
                             onChange={(event, newFeatures) => {
                                 setFeatures(newFeatures);
-                            }} />
+                            }}
+                            />
                         </Grid>
                     </Grid>
                     <Grid item xs={12} container style={{maxWidth:700}} alignItems='center'>
@@ -84,11 +86,24 @@ export default function Feedback(props){
                                 </Paper>
                             </Grid>
                             <Grid item>
-                                <Rating precision={0.5} emptyIcon={<StarBorderIcon fontSize='inherit' />}/>
+                                <Rating 
+                                precision={0.5} 
+                                emptyIcon={<StarBorderIcon fontSize='inherit' />}
+                                onChange={(event, newRating) => {
+                                    setRating(newRating);
+                                }}
+                                value={rating}
+                                />
                             </Grid>
                         </Grid>
                         <Grid item xs={6} align='center'>
-                            <Button variant='outlined' style={{width: '70%', height: '120%'}}>Submit</Button>
+                            <Button 
+                            variant='outlined'
+                            size='large'
+                            style={{width: '70%'}}
+                            >
+                            Submit
+                            </Button>
                         </Grid>
                     </Grid>
                 </Grid>
