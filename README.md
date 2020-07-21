@@ -25,3 +25,7 @@ Install Robo3T:
 - Address: localhost: 27017
 Note: no authentication required
 
+## Frontend
+* client/index.js: Wrapping our future components with React Router and passing a history prop 
+* client/Main/index.js: where we put our paths matched to components we build 
+* 
