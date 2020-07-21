@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {makeStyles, withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import SearchBar from '../SearchBar';
+import APIClient from '../apiClient';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,6 +29,12 @@ export default function Feedback(props){
     const [likes, setLikes] = React.useState('');
     const [features, setFeatures] = React.useState('');
     const [rating, setRating] = React.useState(1);
+
+    const apiClient = new APIClient();
+
+    const handleSubmit = (feedback) => {
+        apiClient.createFeedback(feedback);
+    };
 
     return (
         <div className={classes.root}>
@@ -101,6 +108,8 @@ export default function Feedback(props){
                             variant='outlined'
                             size='large'
                             style={{width: '70%'}}
+                            onClick={handleSubmit({likes, features, rating})}
+                            href="../about"
                             >
                             Submit
                             </Button>

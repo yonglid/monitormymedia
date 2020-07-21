@@ -30,6 +30,16 @@ class APIClient {
   return this.perform('post', '/content', art);
  }
 
+ // creating feedback data
+ createFeedback(feedback) {
+   const form = {
+     'likes': feedback.likes,
+     'features': 'aedan',
+     'rating': feedback.rating,
+   }
+   return this.perform('post', '/feedback', form);
+ }
+
  deleteStarred(article) {
   return this.perform('delete', `/star/${article.id}`);
  }

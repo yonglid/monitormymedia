@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 mongoose.Promise = global.Promise;
 const feedbackSchema = new mongoose.Schema({
-    id: mongoose.Schema.ObjectId,
+    _id: mongoose.Schema.ObjectId,
     likes: {
         type: String,
     },
