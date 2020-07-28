@@ -82,8 +82,9 @@ class SearchBar extends React.Component {
     this.handleTabChange = this.handleTabChange.bind(this);
     this.showAlert = this.showAlert.bind(this);
     this.removeAlert = this.removeAlert.bind(this);
-    this.try = this.try.bind(this);
+    this.about = this.about.bind(this);
     this.personalize = this.personalize.bind(this);
+    this.read = this.read.bind(this);
   }
 
   handleTabChange = (event, value) => {
@@ -102,7 +103,7 @@ class SearchBar extends React.Component {
     this.setState({ showAlert: false });
   }
 
-  try = () => {
+  about = () => {
     this.props.history.push("/about");
   };
 
@@ -110,9 +111,12 @@ class SearchBar extends React.Component {
     this.props.history.push("/newsfeed");
   };
 
+  read = () => {
+    this.props.history.push("/readinglist");
+  };
   render() {
     const { classes } = this.props;
-    const withAlert = (
+    const search = (
       <div className={classes.root}>
         <AppBar position="static" style={{ alignItems: "center" }}>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
@@ -134,47 +138,14 @@ class SearchBar extends React.Component {
               />
             </div>
             <div className={classes.grow} />
-            <Alert severity="info">This is an info alert — check it out!</Alert>
-            <Button onClick={this.removeAlert} color="inherit">
-              About
-            </Button>
-            <Button onClick={this.showAlert} color="inherit">
-              Newsfeed
-            </Button>
-            <Button onClick={this.logout} color="inherit">
-              Logout
-            </Button>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-    const withoutAlert = (
-      <div className={classes.root}>
-        <AppBar position="static" style={{ alignItems: "center" }}>
-          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <MenuIcon />
-        </IconButton> */}
-          <Toolbar>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-
-              <InputBase
-                placeholder="Search for articles in an area!"
-                onKeyPress={this.props.onSearch}
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
-            <div className={classes.grow} />
-            <Button onClick={this.try} color="inherit">
+            <Button onClick={this.about} color="inherit">
               About
             </Button>
             <Button onClick={this.personalize} color="inherit">
               Newsfeed
+            </Button>
+            <Button onClick={this.read} color="inherit">
+              Read
             </Button>
             <Button onClick={this.logout} color="inherit">
               Logout
@@ -185,7 +156,7 @@ class SearchBar extends React.Component {
     );
     // console.log(classes.history.push('/about'));
     console.log(this.state.showAlert);
-    return this.state.showAlert ? withAlert : withoutAlert;
+    return search;
   }
 }
 
