@@ -21,6 +21,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import DateTimeRangeContainer from 'react-advanced-datetimerange-picker'
 import moment from "moment"
 
+import APIClient from '../apiClient'
 const options = ["1", "2", "3", "4", "5", "6", "7"];
 const states = ["MA", "CA"]; // definitely find library for this
 const useStyles = makeStyles((theme) => ({
@@ -62,9 +63,10 @@ export default function ControllableStates(props) {
 
   //   const classes = useStyles();
   const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
+    localnewsoutlet: false,
+    twitter: false,
+    facebook: false,
+    national: false
   });
 
   const handleChange = (event) => {
@@ -93,6 +95,26 @@ export default function ControllableStates(props) {
       start: startDate,
       end: endDate
     })
+  }
+
+  Object.filter = function (obj) {
+    let result = {}, key;
+
+    for (key in obj) {
+      if (obj[key]) {
+        result[key] = obj[key];
+      }
+    }
+
+    return result;
+  };
+
+  const handleSubmit = () => {
+    console.log('handling submit')
+    const apiClient = new APIClient()
+    console.log(state)
+    const selectedNewsPreferences = Object.filter(state)
+    apiClient.createUser({ state: states, districtNumber: districtValue, newsPreference: Object.keys(selectedNewsPreferences).toString(), notification: pushNotification })
   }
 
   return (
@@ -151,7 +173,7 @@ export default function ControllableStates(props) {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={gilad}
+                      checked={state.localnewsoutlet}
                       onChange={handleChange}
                       name="localnewsoutlet"
                     />
@@ -161,7 +183,7 @@ export default function ControllableStates(props) {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={jason}
+                      checked={state.twitter}
                       onChange={handleChange}
                       name="twitter"
                     />
@@ -171,12 +193,22 @@ export default function ControllableStates(props) {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={antoine}
+                      checked={state.facebook}
                       onChange={handleChange}
                       name="facebook"
                     />
                   }
                   label="Facebook"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={state.national}
+                      onChange={handleChange}
+                      name="national"
+                    />
+                  }
+                  label="National News Outlet"
                 />
               </FormGroup>
             </FormControl>
@@ -220,6 +252,9 @@ export default function ControllableStates(props) {
                 name="pushNotifications"
               />
             </div>
+            <Grid container justify="center">
+              <button onClick={handleSubmit} > Go To Newsfeed</button>
+            </Grid>
           </Paper>
         </Grid>
       </div>
