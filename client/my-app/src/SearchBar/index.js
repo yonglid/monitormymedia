@@ -194,7 +194,7 @@ class SearchBar extends React.Component {
       </div>
     );
     // console.log(classes.history.push('/about'));
-    console.log(this.state.showAlert);
+    // console.log(this.state.showAlert);
     return this.state.showAlert ? withAlert : withoutAlert;
   }
 }
