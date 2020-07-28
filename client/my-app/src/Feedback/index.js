@@ -33,7 +33,8 @@ export default function Feedback(props) {
     const apiClient = new APIClient();
 
     const handleSubmit = (feedback) => {
-        console.log(feedback)
+        const feedback_obj = new Object();
+        // feedback_obj.likes =
         apiClient.createFeedback(feedback);
     };
 
@@ -60,8 +61,9 @@ export default function Feedback(props) {
                                 rows={4}
                                 rowsMax={4}
                                 value={likes}
-                                onChange={(event, newLikes) => {
-                                    setLikes(newLikes);
+                                onChange={(event) => {
+                                    console.log(event.target.value)
+                                    setLikes(event.target.value);
                                 }}
                             />
                         </Grid>
@@ -80,8 +82,9 @@ export default function Feedback(props) {
                                 rows={4}
                                 rowsMax={4}
                                 value={features}
-                                onChange={(event, newFeatures) => {
-                                    setFeatures(newFeatures);
+                                onChange={(event) => {
+                                    console.log(event.target.value)
+                                    setFeatures(event.target.value);
                                 }}
                             />
                         </Grid>
@@ -90,7 +93,7 @@ export default function Feedback(props) {
                         <Grid item xs={6} container direction='column' spacing={2} alignItems='center'>
                             <Grid item>
                                 <Paper elevation={3} className={classes.paper}>
-                                    <Typography>How did you find this tool?</Typography>
+                                    <Typography>How would you rate this tool?</Typography>
                                 </Paper>
                             </Grid>
                             <Grid item>
@@ -110,7 +113,7 @@ export default function Feedback(props) {
                                 size='large'
                                 style={{ width: '70%' }}
                                 onClick={() => handleSubmit({ likes, features, rating })} // if you don't have the () => function trigger, function is being called instead of passing it to onClick https://stackoverflow.com/questions/33846682/react-onclick-function-fires-on-render
-                                href="../about"
+                            // href="../about"
                             >
                                 Submit
                             </Button>
