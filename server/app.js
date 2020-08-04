@@ -1,24 +1,25 @@
 // import dependencies
-import express from "express";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import logger from "morgan";
-import mainRoutes from "./routes/main";
-import cors from "cors";
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import logger from 'morgan';
+import mainRoutes from './routes/main';
+import cors from 'cors';
 // set up dependencies
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(logger("dev"));
+app.use(logger('dev'));
+
 // set up mongoose
-mongoose
-  .connect("mongodb://localhost/projectsupport")
+// added for deprecation warnings
+mongoose.connect('mongodb://localhost/projectsupport', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log("Database connected");
+    console.log('Database connected');
   })
   .catch((error) => {
-    console.log("Error connecting to database");
+    console.log('Error connecting to database');
   });
 // set up port
 const port = 5035;

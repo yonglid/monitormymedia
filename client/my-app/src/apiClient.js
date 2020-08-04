@@ -48,12 +48,28 @@ class APIClient {
     return this.perform('get', '/starred');
   }
 
+  createUser(userInfo) {
+    const body = {
+      "email": userInfo.email,
+      "state": userInfo.state,
+      "districtNumber": userInfo.districtNumber,
+      "newsPreference": userInfo.newsPreference,
+      "districtSearch": userInfo.districtSearch,
+      "dateRange": userInfo.dateRange,
+      "notification": userInfo.notification,
+      "starred": userInfo.starred
+    }
+    console.log('making create request')
+    return this.perform('post', '/user', body)
+  }
+
   async perform(method, resource, data) {
     return client({
       method,
       url: resource,
       data,
     }).then(resp => {
+      console.log(`response from api : ${JSON.stringify(resp.data)}`)
       return resp.data ? resp.data : [];
     })
   }
