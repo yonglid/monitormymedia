@@ -114,6 +114,9 @@ class SearchBar extends React.Component {
   read = () => {
     this.props.history.push("/readinglist");
   };
+  feedback = () => {
+    this.props.history.push('/feedback');
+  };
   render() {
     const { classes } = this.props;
     const search = (
@@ -146,6 +149,9 @@ class SearchBar extends React.Component {
             </Button>
             <Button onClick={this.read} color="inherit">
               Read
+              </Button>
+            <Button onClick={this.feedback} color='inherit'>
+              Feedback
             </Button>
             <Button onClick={this.logout} color="inherit">
               Logout

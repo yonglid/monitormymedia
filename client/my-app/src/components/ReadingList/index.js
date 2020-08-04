@@ -321,7 +321,6 @@ const NotesTable = (props) => {
 
                                         <Grid item xs>
                                             <Button shape='circle' icon={<PlusOutlined />} onClick={() => alert("trigger add to database")} />
-
                                             <EditableTable />
                                         </Grid>
                                     </Grid>

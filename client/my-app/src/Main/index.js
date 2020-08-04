@@ -9,6 +9,9 @@ import Personalize from "../components/Personalize";
 import Tweets from "../components/Tweets";
 import ReadingList from "../components/ReadingList/index";
 
+import Feedback from '../Feedback';
+import FeedbackLanding from '../FeedbackLanding';
+
 class Main extends Component {
   // constructor(props) {
   //   super(props);
@@ -30,6 +33,8 @@ class Main extends Component {
           <Route path="/about" component={About} />
           <Route path="/newsfeed" component={Personalize} />
           <Route path="/readinglist" component={ReadingList} />
+          <Route path="/feedback" component={Feedback} />
+          <Route path='/thankyou' component={FeedbackLanding} />
         </Switch>
       </Router>
     );
