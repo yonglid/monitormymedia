@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
@@ -112,9 +112,14 @@ export default function Feedback(props) {
                                 variant='outlined'
                                 size='large'
                                 style={{ width: '70%' }}
+<<<<<<< HEAD
                                 onClick={() => handleSubmit({ likes, features, rating })}
                             // if you don't have the () => function trigger, function is being called instead of passing it to onClick https://stackoverflow.com/questions/33846682/react-onclick-function-fires-on-render
                             // href="../about"
+=======
+                                onClick={() => handleSubmit({ likes, features, rating })} // if you don't have the () => function trigger, function is being called instead of passing it to onClick https://stackoverflow.com/questions/33846682/react-onclick-function-fires-on-render
+                                href='../thankyou'
+>>>>>>> b9b0b757d7fe698a2c112159bbaf457b0e7c2a91
                             >
                                 Submit
                             </Button>
