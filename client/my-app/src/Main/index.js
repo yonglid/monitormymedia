@@ -8,6 +8,7 @@ import About from "../About";
 import Personalize from "../Personalize";
 import Tweets from "../Tweets";
 import Feedback from '../Feedback';
+import FeedbackLanding from '../FeedbackLanding';
 
 class Main extends Component {
   // constructor(props) {
@@ -30,6 +31,7 @@ class Main extends Component {
           <Route path="/about" component={About} />
           <Route path="/newsfeed" component={Personalize} />
           <Route path="/feedback" component={Feedback} />
+          <Route path='/thankyou' component={FeedbackLanding} />
         </Switch>
       </Router>
     );
