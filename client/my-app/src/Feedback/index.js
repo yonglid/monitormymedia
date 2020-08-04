@@ -112,7 +112,8 @@ export default function Feedback(props) {
                                 variant='outlined'
                                 size='large'
                                 style={{ width: '70%' }}
-                                onClick={() => handleSubmit({ likes, features, rating })} // if you don't have the () => function trigger, function is being called instead of passing it to onClick https://stackoverflow.com/questions/33846682/react-onclick-function-fires-on-render
+                                onClick={() => handleSubmit({ likes, features, rating })}
+                            // if you don't have the () => function trigger, function is being called instead of passing it to onClick https://stackoverflow.com/questions/33846682/react-onclick-function-fires-on-render
                             // href="../about"
                             >
                                 Submit
