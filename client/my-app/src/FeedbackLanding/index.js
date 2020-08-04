@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import SearchBar from '../SearchBar';
+import SearchBar from '../components/SearchBar';
 
 const useStyles = makeStyles((theme) => ({
     root: {
