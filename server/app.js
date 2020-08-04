@@ -25,11 +25,11 @@ mongoose.connect('mongodb://localhost/projectsupport', { useNewUrlParser: true, 
 const port = 5035;
 // set up route
 // set up route
-app.use('/api/', mainRoutes);
+app.use("/api", mainRoutes);
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json({
-    message: 'Welcome to Project Support',
+    message: "Welcome to Project Support",
   });
 });
 app.listen(port, () => {
