@@ -6,13 +6,12 @@ import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import { withAuth } from "@okta/okta-react";
 
-import GithubRepo from "../GithubRepo";
+import GithubRepo from "../../misc/GithubRepo";
 import SearchBar from "../SearchBar";
 
-import APIClient from "../apiClient";
-import googlerssClient from "../googlerssClient";
-import GoogleRssArticle from "../GoogleRssArticle";
-import twitterClient from "../twitterClient";
+import APIClient from "../../clients/apiClient";
+import TweetCard from "../TweetCard";
+import twitterClient from "../../clients/twitterClient";
 
 import "../Styles/media_monitor.scss";
 
@@ -28,7 +27,7 @@ const styles = (theme) => ({
   },
 });
 
-class Home extends React.Component {
+class Tweets extends React.Component {
   state = {
     value: 0,
     repos: [],
@@ -60,30 +59,16 @@ class Home extends React.Component {
   resetRepos = (repos) => this.setState({ ...this.state, repos });
   resetArticles = (articles) => this.setState({ ...this.state, articles });
 
-  isKudo = (repo) => this.state.kudos.find((r) => r.id === repo.id);
-  onKudo = (repo) => {
-    this.updateBackend(repo);
-  };
-
   isStarred = (article) => this.state.starred.find((a) => a.id === article.id);
   onStarred = (article) => {
     this.updateStarredBackend(article);
-  };
-
-  updateBackend = (repo) => {
-    if (this.isKudo(repo)) {
-      this.apiClient.deleteKudo(repo);
-    } else {
-      this.apiClient.createKudo(repo);
-    }
-    this.updateState(repo);
   };
 
   updateStarredBackend = (article) => {
     if (this.isStarred(article)) {
       this.apiClient.deleteStarred(article);
     } else {
-      this.apiClient.createStarred(article);
+      this.apiClient.createStarredTweets(article);
     }
     this.updateStarredState(article);
   };
@@ -115,6 +100,7 @@ class Home extends React.Component {
   };
 
   onSearch = (event) => {
+    console.log("EVENT: ", event);
     const target = event.target;
     if (!target.value || target.length < 3) {
       return;
@@ -123,41 +109,41 @@ class Home extends React.Component {
       return;
     }
 
-    googlerssClient.getRssXMLFeed(target.value).then((response) => {
-      const jsonResp = JSON.parse(response);
-      console.log(JSON.parse(response));
-      this.setState({ ...this.state, value: 1 });
-      this.resetArticles(jsonResp.items);
-    });
-    twitterClient.getTwitterTrends(1).then((response) => {
-      console.log(response);
-    });
+    // googlerssClient.getRssXMLFeed(94578).then((response) => {
+    //   const jsonResp = JSON.parse(response);
+    //   console.log(JSON.parse(response));
+    //   this.setState({ ...this.state, value: 1 });
+    //   this.resetArticles(jsonResp.items);
+    // });
+    // twitterClient.getTwitterTrends(1).then((response) => {
+    //   console.log(response);
+    //   const jsonResp = response;
+    //   this.setState({ ...this.state, value: 1 });
+    //   console.log("json items?: ", jsonResp[0]["trends"]);
+    //   this.resetArticles(jsonResp[0]["trends"]);
+    // });
+    const query = "Covid";
+    const result_type = "mixed";
+    const count = 10;
+    twitterClient
+      .getTweets(target.value, result_type, count)
+      .then((response) => {
+        const jsonResp = response["statuses"];
+        this.setState({ ...this.state, value: 1 });
+        this.resetArticles(jsonResp);
+        console.log(jsonResp);
+      });
   };
-  renderRepos = (repos) => {
-    if (!repos) {
-      return [];
-    }
-    return repos.map((repo) => {
-      return (
-        <Grid item xs={12} md={3} key={repo.id}>
-          <GithubRepo
-            onKudo={this.onKudo}
-            isKudo={this.isKudo(repo)}
-            repo={repo}
-          />
-        </Grid>
-      );
-    });
-  };
+
   renderArticles = (articles) => {
-    console.log("ARTICLES");
+    console.log("TWEETS");
     console.log(articles);
     if (!articles) {
       return [];
     }
     return articles.map((article) => {
       return (
-        <GoogleRssArticle
+        <TweetCard
           onStarred={this.onStarred}
           isStarred={this.isStarred(article)}
           article={article}
@@ -205,4 +191,4 @@ class Home extends React.Component {
   }
 }
 
-export default withStyles(styles)(withAuth(Home));
+export default withStyles(styles)(withAuth(Tweets));

@@ -7,7 +7,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
-import SearchBar from '../SearchBar';
+import SearchBar from '../components/SearchBar';
 import APIClient from '../apiClient';
 
 const useStyles = makeStyles((theme) => ({

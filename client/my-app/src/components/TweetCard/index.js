@@ -35,7 +35,6 @@ class TweetCard extends React.Component {
     return (
       <div className="article-card">
         <h2>{this.props.article.text}</h2>
-
         {/* <Button
           variant="contained"
           color="inherit"
