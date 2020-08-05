@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { Security, ImplicitCallback, SecureRoute } from "@okta/okta-react";
 
-import Login from "../misc/GithubRepo/Login";
 import Home from "../components/Home";
 import About from "../components/About";
 import Personalize from "../components/Personalize";

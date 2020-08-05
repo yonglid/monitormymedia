@@ -25,6 +25,10 @@ class APIClient {
     };
     return this.perform("post", "/content", art);
   }
+  createReadings(readings) {
+    console.log("posting readings: ", readings)
+    return this.perform("post", "/readings", readings)
+  }
 
   deleteStarred(article) {
     return this.perform("delete", `/star/${article.id}`);

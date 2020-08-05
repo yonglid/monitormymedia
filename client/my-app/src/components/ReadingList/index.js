@@ -70,13 +70,22 @@ const EditableCell = ({
         </td>
     );
 };
+
+var checkedReads = []
+const apiClient = new APIClient();
+function addReadsToDB(data) {
+    // data will be list of ids for reads we brought in and populated
+    console.log("data", data)
+    apiClient.createReadings(data)
+
+}
 const EditableTable = () => {
     const [form] = Form.useForm();
     const [data, setData] = useState(originData);
     const [editingKey, setEditingKey] = useState("");
     const [visibleDrawer, setVisibleDrawer] = useState(false);
     const apiClient = new APIClient();
-    const [reads, setReads] = useState([])
+    const [reads, setReads] = useState(checkedReads)
 
     const [addNoteDrawer, setAddNoteDrawer] = useState(false)
 
@@ -109,8 +118,12 @@ const EditableTable = () => {
 
     const onCheck = (selected) => {
         const newReads = [...reads, selected]
+        console.log(selected)
         setReads(newReads)
     }
+    useEffect(() => {
+        checkedReads = reads
+    }, [reads])
 
     const showDrawer = () => {
         setVisibleDrawer(true);
@@ -320,7 +333,7 @@ const NotesTable = (props) => {
                                     <Grid item xs container direction="column" spacing={2}>
 
                                         <Grid item xs>
-                                            <Button shape='circle' icon={<PlusOutlined />} onClick={() => alert("trigger add to database")} />
+                                            <Button shape='circle' icon={<PlusOutlined />} onClick={() => addReadsToDB(checkedReads)} />
                                             <EditableTable />
                                         </Grid>
                                     </Grid>
