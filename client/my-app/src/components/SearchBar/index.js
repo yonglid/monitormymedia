@@ -117,6 +117,9 @@ class SearchBar extends React.Component {
   feedback = () => {
     this.props.history.push('/feedback');
   };
+  contact = () => {
+    this.props.history.push('/contact');
+  };
   render() {
     const { classes } = this.props;
     const search = (
@@ -152,6 +155,9 @@ class SearchBar extends React.Component {
               </Button>
             <Button onClick={this.feedback} color='inherit'>
               Feedback
+            </Button>
+            <Button onClick={this.contact} color='inherit'>
+              Contact
             </Button>
             <Button onClick={this.logout} color="inherit">
               Logout
