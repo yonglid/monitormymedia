@@ -10,6 +10,7 @@ import ReadingList from "../components/ReadingList/index";
 
 import Feedback from '../Feedback';
 import FeedbackLanding from '../FeedbackLanding';
+import Contact from '../Contact'
 
 class Main extends Component {
   // constructor(props) {
@@ -34,6 +35,7 @@ class Main extends Component {
           <Route path="/readinglist" component={ReadingList} />
           <Route path="/feedback" component={Feedback} />
           <Route path='/thankyou' component={FeedbackLanding} />
+          <Route path='/contact' component={Contact} />
         </Switch>
       </Router>
     );
